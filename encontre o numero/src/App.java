@@ -22,10 +22,10 @@ public class App {
         }
 
         if(tentativa < numero){
-            System.out.println("Tente novamente. Esse número é muito pequeno!");
+            numeroMuitoPequeno(tentativa, numero);
         }
         if(tentativa > numero){
-            System.out.println("Tente novamente. Esse número é muito grande");
+            numeroMuitoGrande(tentativa, numero);
         }
 
         tentativa = guiria.nextInt();
@@ -34,10 +34,10 @@ public class App {
             desarmarBomba();
         }
         if(tentativa < numero){
-            System.out.println("Tente novamente. Esse número é muito pequeno!");
+            numeroMuitoPequeno(tentativa, numero);
         }
         if(tentativa > numero){
-            System.out.println("Tente novamente. Esse número é muito grande");
+            numeroMuitoGrande(tentativa, numero);
         }
 
         tentativa = guiria.nextInt();
@@ -46,14 +46,14 @@ public class App {
             desarmarBomba();
         }
         if(tentativa < numero){
-            System.out.println("A bomba explodiu!");
+            explodirBomba();
         }
         if(tentativa > numero){
-            System.out.println("A bomba explodiu!");
+            explodirBomba();
         }
 
         guiria.close();
-    }  
+    }
 
     static int definirNumero(int quantidade){
         return (int)((int)quantidade*Math.random());
@@ -61,5 +61,21 @@ public class App {
 
     static void desarmarBomba(){
         System.out.println("Bomba desarmada");
+    }
+
+    static void explodirBomba(){
+        System.out.println("A bomba explodiu");
+    }
+
+    static void numeroMuitoGrande(int tentativa, int numero){
+        System.out.println("Tente novamente. Esse número é muito grande");
+        if(Math.abs(tentativa - numero) <= 5)
+            System.out.println("Sua tentativa não foi ruim");
+    }
+
+    static void numeroMuitoPequeno(int tentativa, int numero){
+        System.out.println("Tente novamente. Esse número é muito pequeno");
+        if(Math.abs(tentativa - numero) <= 5)
+            System.out.println("Sua tentativa não foi ruim");
     }
 }
